@@ -1,0 +1,65 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      <ion-icon name="medkit-outline"></ion-icon>
+      Evercare Hospital
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <!-- <div id="canvas"></div> -->
+  <div class="engine-wrapper">
+    <canvas #rendererCanvas id="renderCanvas"></canvas>
+  </div>
+
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Blank</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-item>
+    <ion-input [(ngModel)]="myText"></ion-input>
+  </ion-item>
+
+  <ion-fab horizontal="center">
+    <ion-fab-button size="small">
+      <ion-icon name="keypad-outline"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-button size="small">
+      <ion-icon name="keypad-outline"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-button (click)="startRecognition()" *ngIf="!recording">
+      <ion-icon name="mic-outline"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-button (click)="stopRecognition()" *ngIf="recording">
+      <ion-icon name="mic-off-circle-outline"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-button size="small">
+      <ion-icon name="close-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-button expand="full" (click)="startRecognition()" *ngIf="!recording">
+    <ion-icon name="volume-high-outline" slot="start"></ion-icon>
+    Start speech recognition 11111111
+  </ion-button>
+
+  <ion-button
+    expand="full"
+    (click)="stopRecognition()"
+    color="danger"
+    *ngIf="recording"
+  >
+    <ion-icon name="mic-off-outline" slot="start"></ion-icon>
+    Stop speech recognition
+  </ion-button>
+
+  <ion-button expand="full" (click)="speakText()" *ngIf="!recording">
+    <ion-icon name="volume-high-outline" slot="start"></ion-icon>
+    Speak text
+  </ion-button>
+
+</ion-content>
